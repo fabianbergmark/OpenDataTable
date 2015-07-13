@@ -27,6 +27,6 @@ library
     ghc-options: -fno-warn-orphans -fno-warn-unused-binds -fno-warn-unused-matches
 
     build-depends: base             == 4.*
-                 , template-haskell == 2.9.*
-                 , th-lift          == 0.6.*
-                 , hxt              == 9.3.*
+                 , template-haskell == 2.*
+                 , th-lift          == 0.*
+                 , hxt              == 9.*
