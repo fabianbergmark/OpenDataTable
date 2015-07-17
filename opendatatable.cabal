@@ -21,6 +21,7 @@ library
     default-language: Haskell2010
 
     exposed-modules: Data.OpenDataTable
+                     Data.OpenDataTableNoTH
                      Data.OpenDataTable.Parser
                      Data.OpenDataTable.Pickle
 
