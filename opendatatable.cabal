@@ -13,6 +13,10 @@ build-type:        Simple
 
 extra-source-files: LICENSE
 
+Flag NoTH
+  Description: Don't use Template Haskell
+  Default:     False
+
 source-repository head
   type:     git
   location: https://github.com/fabianbergmark/OpenDataTable.git
@@ -20,14 +24,27 @@ source-repository head
 library
     default-language: Haskell2010
 
-    exposed-modules: Data.OpenDataTable
-                     Data.OpenDataTableNoTH
-                     Data.OpenDataTable.Parser
-                     Data.OpenDataTable.Pickle
+    if flag(NoTH)
+      exposed-modules: Data.OpenDataTable
+                       Data.OpenDataTable.LiftNoTH
+                       Data.OpenDataTable.Parser
+                       Data.OpenDataTable.Pickle
+
+    else
+      exposed-modules: Data.OpenDataTable
+                       Data.OpenDataTable.Lift
+                       Data.OpenDataTable.LiftNoTH
+                       Data.OpenDataTable.Parser
+                       Data.OpenDataTable.Pickle
 
     ghc-options: -fno-warn-orphans -fno-warn-unused-binds -fno-warn-unused-matches
 
-    build-depends: base             == 4.*
-                 , template-haskell == 2.*
-                 , th-lift          == 0.*
-                 , hxt              == 9.*
+    if flag(NoTH)
+      build-depends: base             == 4.*
+                   , template-haskell == 2.*
+                   , hxt              == 9.*
+    else
+      build-depends: base             == 4.*
+                   , template-haskell == 2.*
+                   , th-lift          == 0.*
+                   , hxt              == 9.*

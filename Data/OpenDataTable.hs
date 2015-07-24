@@ -1,5 +1,3 @@
-{-# LANGUAGE TemplateHaskell #-}
-
 module Data.OpenDataTable
        ( Binding(..)
        , Delete(..)
@@ -22,8 +20,6 @@ module Data.OpenDataTable
        , SecurityLevel(..)
        , Select(..)
        , Update(..) ) where
-
-import Language.Haskell.TH.Lift (deriveLift)
 
 import Text.Read
 import Text.ParserCombinators.ReadP hiding (choice)
@@ -257,25 +253,3 @@ instance Show ParamType where
   showsPrec _ ParamTypeHeader = showString "header"
   showsPrec _ ParamTypePath = showString "path"
   showsPrec _ ParamTypeVariable = showString "variable"
-
-$(deriveLift ''OpenDataTable)
-$(deriveLift ''SecurityLevel)
-$(deriveLift ''Delete)
-$(deriveLift ''Meta)
-$(deriveLift ''Binding)
-$(deriveLift ''Select)
-$(deriveLift ''Paging)
-$(deriveLift ''PagingModel)
-$(deriveLift ''PagingSize)
-$(deriveLift ''PagingStart)
-$(deriveLift ''PagingTotal)
-$(deriveLift ''NextPage)
-$(deriveLift ''Insert)
-$(deriveLift ''Update)
-$(deriveLift ''Product)
-$(deriveLift ''Function)
-$(deriveLift ''FunctionType)
-$(deriveLift ''Input)
-$(deriveLift ''InputInfo)
-$(deriveLift ''InputType)
-$(deriveLift ''ParamType)
